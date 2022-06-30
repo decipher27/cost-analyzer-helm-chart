@@ -649,6 +649,10 @@ spec:
             {{- end }}
             {{- end }}
             {{- end }}
+            {{- if .Values.oidc.enabled }}
+            - name: OIDC_ENABLED
+              value: "true"
+            {{- end}}
             {{- if .Values.saml }}
             {{- if .Values.saml.enabled }}
             - name: SAML_ENABLED

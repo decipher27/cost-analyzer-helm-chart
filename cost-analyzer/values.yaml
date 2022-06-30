@@ -180,12 +180,13 @@ saml:
           - "editor"
 
 oidc:
-  enabled: true
-  clientID: "kubecost"
-  clientSecret: "nI2gkwtpa07Lv63YJcfDcNHk5JHwI21r"
-  secretName: "kubecost-oidc-secret"
-  authURL: "http://ac5d043cd1d6445969427676f23a8433-559556755.eu-south-1.elb.amazonaws.com:8080/realms/kubecost-oidc/protocol/openid-connect/auth?client_id=kubecost&response_type=code"
-  discoveryURL: "http://ac5d043cd1d6445969427676f23a8433-559556755.eu-south-1.elb.amazonaws.com:8080/realms/kubecost-oidc/.well-known/openid-configuration"
+  enabled: false
+  clientID: "" # application/client client_id paramter obtained from provider, used to make requests to server
+  clientSecret: "" # application/client client_secret paramter obtained from provider, used to make requests to server
+  secretName: "kubecost-oidc-secret" # k8s secret where clientsecret will be stored
+  authURL: "https://my.auth.server/authorize" # endpoint for login to auth server 
+  loginRedirectURL: "http://my.kubecost.url/model/oidc/authorize" # Kubecost url configured in provider for redirect after authentication
+  discoveryURL: "https://my.auth.server/.well-known/openid-configuration" # url for OIDC endpoint discovery
 
 # Adds an httpProxy as an environment variable. systemProxy.enabled must be `true`to have any effect.
 # Ref: https://www.oreilly.com/library/view/security-with-go/9781788627917/5ea6a02b-3d96-44b1-ad3c-6ab60fcbbe4f.xhtml
